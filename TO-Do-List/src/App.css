@@ -1,39 +1,86 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width:max-content;
+  margin: 0 auto;
+  border-radius: 4px;
+
+}
+
+h1 {
+  text-align: center;
 }
 
 .input-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.input-container input[type="text"] {
-  flex: 1;
+input {
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 30px;
 }
 
-input[type="text"],
 button {
-  padding: 10px;
+  padding: 10px 16px;
+  margin-left: 10px;
   font-size: 16px;
-  border-radius: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.task-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.task-column {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-right: 60px;
+  color: blue;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
 }
 
 li {
   display: flex;
   align-items: center;
-  margin-bottom: 4px; 
-}
-
-li span {
-  margin-right: 14px; 
+  margin-bottom: 10px;
 }
 
 .bullet {
+  font-size: 20px;
   margin-right: 10px;
 }
 
+.task {
+  flex-grow: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-button,
+.complete-button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-size: 14px;
+  background-color: orangered;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
