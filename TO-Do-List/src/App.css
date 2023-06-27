@@ -84,3 +84,22 @@ li {
   border: none;
   cursor: pointer;
 }
+
+.task {
+  flex-grow: 1;
+  background-color: #000000;
+  color: #fff; 
+  display: inline-block; 
+  width: 100%; 
+  padding: 5px; 
+  border-radius: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #fff;
+  background-color: #000000;
+  display: inline-block; 
+  width: 100%; 
+  padding: 5px; 
+}

@@ -1,6 +1,39 @@
 import React, { useState } from 'react';
 import './App.css';
 
+function Form({ onAddTodo }) {
+  const [input, setInput] = useState('');
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      addTodo();
+    }
+  };
+
+  const addTodo = () => {
+    if (input.trim() !== '') {
+      onAddTodo(input);
+      setInput('');
+    }
+  };
+
+  return (
+    <div className="input-container">
+      <input
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+      />
+      <button onClick={addTodo}>Add</button>
+    </div>
+  );
+}
+
 function App() {
   const [list, setList] = useState([
     {
@@ -19,7 +52,6 @@ function App() {
       completed: false,
     },
   ]);
-  const [input, setInput] = useState('');
 
   const addTodo = (todo) => {
     const newTodo = {
@@ -28,7 +60,6 @@ function App() {
       completed: false,
     };
     setList([...list, newTodo]);
-    setInput('');
   };
 
   const deleteTodo = (id) => {
@@ -49,27 +80,13 @@ function App() {
     setList(newList);
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      addTodo(input);
-    }
-  };
-
   const completedTasks = list.filter((todo) => todo.completed);
   const incompleteTasks = list.filter((todo) => !todo.completed);
 
   return (
     <div className="container">
       <h1>To-Do List</h1>
-      <div className="input-container">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-        <button onClick={() => addTodo(input)}>Add</button>
-      </div>
+      <Form onAddTodo={addTodo} />
       <div className="task-container">
         <div className="task-column">
           <h2>Incomplete Tasks</h2>
@@ -111,4 +128,3 @@ function App() {
 }
 
 export default App;
-
