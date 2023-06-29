@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function Form({ onAddTodo }) {
@@ -14,10 +14,31 @@ function Form({ onAddTodo }) {
     }
   };
 
-  const addTodo = () => {
+  const addTodo = async () => {
     if (input.trim() !== '') {
-      onAddTodo(input);
-      setInput('');
+      try {
+        const response = await fetch('http://localhost:3000/todos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            todo: input,
+            completed: false,
+          }),
+        });
+
+        if (response.ok) {
+          const createdTodo = await response.json();
+          onAddTodo(createdTodo);
+          setInput('');
+          window.location.reload(); 
+        } else {
+          console.error('Failed to create todo.');
+        }
+      } catch (error) {
+        console.error('Failed to create todo:', error);
+      }
     }
   };
 
@@ -35,49 +56,90 @@ function Form({ onAddTodo }) {
 }
 
 function App() {
-  const [list, setList] = useState([
-    {
-      id: 1,
-      todo: 'Prepare lunch for work',
-      completed: false,
-    },
-    {
-      id: 2,
-      todo: 'Work out',
-      completed: true,
-    },
-    {
-      id: 3,
-      todo: 'Take a break',
-      completed: false,
-    },
-  ]);
+  const [list, setList] = useState([]);
 
-  const addTodo = (todo) => {
-    const newTodo = {
-      id: Math.random(),
-      todo: todo,
-      completed: false,
-    };
-    setList([...list, newTodo]);
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/todos');
+      const tasks = await response.json();
+      setList(tasks);
+    } catch (error) {
+      console.error('Failed to fetch tasks:', error);
+    }
   };
 
-  const deleteTodo = (id) => {
-    const newList = list.filter((todo) => todo.id !== id);
-    setList(newList);
-  };
+  const addTodo = async (todo) => {
+    try {
+      const response = await fetch('http://localhost:3000/todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(todo),
+      });
 
-  const toggleCompletion = (id) => {
-    const newList = list.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
+      if (response.ok) {
+        const createdTodo = await response.json();
+        setList([...list, createdTodo]);
+      } else {
+        console.error('Failed to create todo.');
       }
-      return todo;
-    });
-    setList(newList);
+    } catch (error) {
+      console.error('Failed to create todo:', error);
+    }
+  };
+
+  const deleteTodo = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/todos/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const newList = list.filter((todo) => todo.id !== id);
+        setList(newList);
+      } else {
+        console.error('Failed to delete todo.');
+      }
+    } catch (error) {
+      console.error('Failed to delete todo:', error);
+    }
+  };
+
+  const toggleCompletion = async (id) => {
+    try {
+      const todoToUpdate = list.find((todo) => todo.id === id);
+      const updatedTodo = {
+        ...todoToUpdate,
+        completed: !todoToUpdate.completed,
+      };
+
+      const response = await fetch(`http://localhost:3000/todos/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedTodo),
+      });
+
+      if (response.ok) {
+        const newList = list.map((todo) => {
+          if (todo.id === id) {
+            return updatedTodo;
+          }
+          return todo;
+        });
+        setList(newList);
+      } else {
+        console.error('Failed to update todo.');
+      }
+    } catch (error) {
+      console.error('Failed to update todo:', error);
+    }
   };
 
   const completedTasks = list.filter((todo) => todo.completed);
