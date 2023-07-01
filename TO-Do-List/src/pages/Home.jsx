@@ -1,65 +1,10 @@
-// export default function Home(){
-//     return <h1>Home Page</h1>
-// }
-
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import TodoForm from '../TodoForm';
+import TodoItem from '../TodoItem';
 
-function Form({ onAddTodo }) {
+function Tol() {
   const [input, setInput] = useState('');
-
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      addTodo();
-    }
-  };
-
-  const addTodo = async () => {
-    if (input.trim() !== '') {
-      try {
-        const response = await fetch('http://localhost:3000/todos', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            todo: input,
-            completed: false,
-          }),
-        });
-
-        if (response.ok) {
-          const createdTodo = await response.json();
-          onAddTodo(createdTodo);
-          setInput('');
-          window.location.reload(); 
-        } else {
-          console.error('Failed to create todo.');
-        }
-      } catch (error) {
-        console.error('Failed to create todo:', error);
-      }
-    }
-  };
-
-  return (
-    <div className="input-container">
-      <input
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-      />
-      <button onClick={addTodo}>Add</button>
-    </div>
-  );
-}
-
-function tol() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -76,24 +21,36 @@ function tol() {
     }
   };
 
-  const addTodo = async (todo) => {
-    try {
-      const response = await fetch('http://localhost:3000/todos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(todo),
-      });
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
 
-      if (response.ok) {
-        const createdTodo = await response.json();
-        setList([...list, createdTodo]);
-      } else {
-        console.error('Failed to create todo.');
+  const addTodo = async (e) => {
+    e.preventDefault();
+
+    if (input.trim() !== '') {
+      try {
+        const response = await fetch('http://localhost:3000/todos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            todo: input,
+            completed: false,
+          }),
+        });
+
+        if (response.ok) {
+          const createdTodo = await response.json();
+          setList([...list, createdTodo]);
+          setInput('');
+        } else {
+          console.error('Failed to create todo.');
+        }
+      } catch (error) {
+        console.error('Failed to create todo:', error);
       }
-    } catch (error) {
-      console.error('Failed to create todo:', error);
     }
   };
 
@@ -152,22 +109,22 @@ function tol() {
   return (
     <div className="container">
       <h1>To-Do List</h1>
-      <Form onAddTodo={addTodo} />
+      <TodoForm
+        input={input}
+        handleInputChange={handleInputChange}
+        addTodo={addTodo}
+      />
       <div className="task-container">
         <div className="task-column">
           <h2>Incomplete Tasks</h2>
           <ul className="task-list">
             {incompleteTasks.map((todo) => (
-              <li key={todo.id}>
-                <span className="bullet">&bull;</span>
-                <span className="task">{todo.todo}</span>
-                <button className="delete-button" onClick={() => deleteTodo(todo.id)}>
-                  &times;
-                </button>
-                <button className="complete-button" onClick={() => toggleCompletion(todo.id)}>
-                  Complete
-                </button>
-              </li>
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                deleteTodo={deleteTodo}
+                toggleCompletion={toggleCompletion}
+              />
             ))}
           </ul>
         </div>
@@ -175,16 +132,12 @@ function tol() {
           <h2>Completed Tasks</h2>
           <ul className="task-list">
             {completedTasks.map((todo) => (
-              <li key={todo.id}>
-                <span className="bullet">&bull;</span>
-                <span className={`task ${todo.completed ? 'completed' : ''}`}>{todo.todo}</span>
-                <button className="delete-button" onClick={() => deleteTodo(todo.id)}>
-                  &times;
-                </button>
-                <button className="complete-button" onClick={() => toggleCompletion(todo.id)}>
-                  Incomplete
-                </button>
-              </li>
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                deleteTodo={deleteTodo}
+                toggleCompletion={toggleCompletion}
+              />
             ))}
           </ul>
         </div>
@@ -193,5 +146,4 @@ function tol() {
   );
 }
 
-export default tol;
-
+export default Tol;
