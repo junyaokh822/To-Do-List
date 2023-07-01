@@ -1,5 +1,72 @@
+
+a {
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+body {
+  margin: 0;
+}
+
 .container {
-  max-width:max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+button {
+  border-radius: 12px;
+  border: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #333;
+    background-color: #fff;
+  }
+
+  a:hover {
+    color: #0056b3;
+  }
+
+  button {
+    background-color: lightgreen;
+    color: #333;
+    gap: 10px;
+  }
+}
+
+.container {
   margin: 0 auto;
   border-radius: 4px;
 
@@ -43,7 +110,7 @@ button {
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 30px;
   margin-bottom: 10px;
   margin-right: 60px;
   color: blue;
@@ -78,7 +145,7 @@ li {
 .complete-button {
   padding: 5px 10px;
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 20px;
   background-color: orangered;
   color: #fff;
   border: none;
@@ -93,6 +160,7 @@ li {
   width: 100%; 
   padding: 5px; 
   border-radius: 10px;
+  font-size: 20px;
 }
 
 .completed {
