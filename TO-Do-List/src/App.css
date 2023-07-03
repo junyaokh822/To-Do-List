@@ -143,9 +143,9 @@ li {
 
 .delete-button,
 .complete-button {
-  padding: 5px 10px;
+  padding: 10px 16px;
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 16px;
   background-color: orangered;
   color: #fff;
   border: none;
