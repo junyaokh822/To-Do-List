@@ -1,12 +1,17 @@
 import { Link ,useMatch, useResolvedPath } from "react-router-dom"
+import {ImHome3} from "react-icons/im"
+import {FcAbout} from "react-icons/fc"
+
 
 
 export default function navbar(){
     return <nav className="nav">
         <Link to="/" className="site-title">
+            <ImHome3 />
             Home Page
         </Link>
-        <ul>
+        <ul >
+            <FcAbout className="about-icon"/>
             <CustomLink to="/about">About</CustomLink>
         </ul>
     </nav>
