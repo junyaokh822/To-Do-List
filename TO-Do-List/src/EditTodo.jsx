@@ -122,7 +122,7 @@ function Tol() {
         const updatedTodo = await response.json();
         const updatedTasks = list.map((task) => {
           if (task.id === id) {
-            return { ...task, todo: updatedTodo.todo};
+            return { ...task, todo: updatedTask };
           }
           return task;
         });

@@ -1,9 +1,8 @@
 {
   "todos": [
     {
-      "id": 1,
       "todo": "Prepare lunch for work",
-      "completed": false
+      "id": 1
     },
     {
       "id": 3,
@@ -12,8 +11,13 @@
     },
     {
       "todo": "Workout",
-      "completed": true,
-      "id": 4
+      "id": 4,
+      "completed": true
+    },
+    {
+      "todo": "Tsun",
+      "id": 5,
+      "completed": true
     }
   ]
 }
