@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "todo": "Prepare lunch for work",
+      "todo": "Prepare lunch for Work",
       "id": 1
     },
     {
@@ -12,11 +12,6 @@
     {
       "todo": "Workout",
       "id": 4,
-      "completed": true
-    },
-    {
-      "todo": "Tsun",
-      "id": 5,
       "completed": true
     }
   ]
