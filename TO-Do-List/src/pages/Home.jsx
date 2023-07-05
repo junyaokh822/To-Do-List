@@ -111,19 +111,22 @@ function Tol() {
 
   const handleTaskEdit = async (id, updatedTask) => {
     try {
+      const todoToUpdate = list.find((todo) => todo.id === id);
+      const completed = todoToUpdate.completed; 
+      
       const response = await fetch(`http://localhost:3000/todos/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ todo: updatedTask }),
+        body: JSON.stringify({ todo: updatedTask, completed }),
       });
-
+  
       if (response.ok) {
         const updatedTodo = await response.json();
         const updatedTasks = list.map((task) => {
           if (task.id === id) {
-            return { ...task, todo: updatedTodo.todo};
+            return { ...task, todo: updatedTodo.todo };
           }
           return task;
         });
@@ -136,6 +139,9 @@ function Tol() {
       console.error('Failed to update todo:', error);
     }
   };
+  
+
+  
 
   const completedTasks = list.filter((todo) => todo.completed);
   const incompleteTasks = list.filter((todo) => !todo.completed);

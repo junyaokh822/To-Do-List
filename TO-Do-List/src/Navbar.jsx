@@ -2,8 +2,6 @@ import { Link ,useMatch, useResolvedPath } from "react-router-dom"
 import {ImHome3} from "react-icons/im"
 import {FcAbout} from "react-icons/fc"
 
-
-
 export default function navbar(){
     return <nav className="nav">
         <Link to="/" className="site-title">
