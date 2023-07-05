@@ -1,18 +1,23 @@
 {
   "todos": [
     {
-      "todo": "Prepare Lunch for Work",
-      "id": 1
-    },
-    {
       "id": 3,
       "todo": "Take a break",
       "completed": false
     },
     {
-      "todo": "Workout",
-      "id": 4,
-      "completed": true
+      "todo": "Workout ",
+      "id": 4
+    },
+    {
+      "todo": "Watch TV",
+      "completed": true,
+      "id": 5
+    },
+    {
+      "todo": "Get groceries",
+      "completed": true,
+      "id": 6
     }
   ]
 }

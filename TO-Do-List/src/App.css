@@ -123,7 +123,7 @@ h2 {
 
 li {
   display: flex;
-  align-items: center;
+  align-items:baseline;
   margin-bottom: 10px;
 }
 
@@ -141,12 +141,22 @@ li {
   color: #888;
 }
 
-.delete-button,
-.complete-button {
+.delete-button
+{
   padding: 10px 16px;
   margin-left: 10px;
   font-size: 16px;
   background-color: orangered;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.complete-button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: rgb(59, 176, 194);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -158,9 +168,10 @@ li {
   color: #fff; 
   display: inline-block; 
   width: 100%; 
-  padding: 5px; 
+  padding: 8px; 
   border-radius: 10px;
   font-size: 20px;
+   
 }
 
 .completed {
@@ -169,5 +180,5 @@ li {
   background-color: #000000;
   display: inline-block; 
   width: 100%; 
-  padding: 5px; 
+  padding: 8px; 
 }

@@ -24,8 +24,8 @@ body{
 .site-title{
     font-size: 2rem;
     display: flex;
-  align-items: center;
-  gap: 5px;
+    align-items: center;
+    gap: 5px;
 }
 
 .nav ul{
@@ -51,7 +51,8 @@ body{
 }
 
 .nav li:hover {
-    background-color: #777;
+    background-color: #6a6464;
+    border-radius: 5px;
 }
 
 .about {

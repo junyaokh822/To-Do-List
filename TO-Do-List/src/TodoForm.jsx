@@ -8,7 +8,9 @@ function TodoForm({ input, handleInputChange, addTodo }) {
         value={input}
         onChange={handleInputChange}
       />
-      <button type="submit">Add</button>
+      <button type="submit">
+      Add
+      </button>
     </form>
   );
 }

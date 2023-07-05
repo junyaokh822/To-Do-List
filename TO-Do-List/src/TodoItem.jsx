@@ -3,7 +3,6 @@ import {MdEdit} from "react-icons/md";
 import {BiSolidSave} from "react-icons/bi";
 import {AiFillDelete} from "react-icons/ai";
 
-
 function TodoItem({ todo, deleteTodo, toggleCompletion, handleEdit, handleTaskEdit, editTask }) {
   const [editInput, setEditInput] = useState(todo.todo);
 
