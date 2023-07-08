@@ -2,8 +2,8 @@
   "todos": [
     {
       "todo": "Take a break",
-      "id": 3,
-      "completed": false
+      "completed": true,
+      "id": 3
     },
     {
       "todo": "WorkOut ",
@@ -22,7 +22,7 @@
     },
     {
       "todo": "Clean the house",
-      "completed": true,
+      "completed": false,
       "id": 7
     }
   ]

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import {MdEdit} from "react-icons/md";
-import {BiSolidSave} from "react-icons/bi";
-import {AiFillDelete} from "react-icons/ai";
+import { MdEdit } from 'react-icons/md';
+import { BiSolidSave } from 'react-icons/bi';
+import { AiFillDelete } from 'react-icons/ai';
+import { Link, useNavigate } from 'react-router-dom';
 
 function TodoItem({ todo, deleteTodo, toggleCompletion, handleEdit, handleTaskEdit, editTask }) {
   const [editInput, setEditInput] = useState(todo.todo);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setEditInput(e.target.value);
@@ -14,10 +16,14 @@ function TodoItem({ todo, deleteTodo, toggleCompletion, handleEdit, handleTaskEd
     e.preventDefault();
     handleTaskEdit(todo.id, editInput);
     handleEdit(null);
-  };  
+  };
 
   const handleOpenEditModal = () => {
     handleEdit(todo.id);
+  };
+
+  const handleNoteClick = () => {
+    navigate(`/note/${todo.id}`);
   };
 
   return (
@@ -36,6 +42,9 @@ function TodoItem({ todo, deleteTodo, toggleCompletion, handleEdit, handleTaskEd
           </button>
         </>
       )}
+      <button className="note-button" onClick={handleNoteClick}>
+        Note
+      </button>
       <button className="delete-button" onClick={() => deleteTodo(todo.id)}>
         <AiFillDelete />
       </button>
