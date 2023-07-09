@@ -1,6 +1,6 @@
 # To-Do List Application
 
-This application is a user-friendly To-Do List built with React. It allows users to effortlessly manage their tasks by adding, deleting, and updating them. The list also offers the flexibility to mark tasks as complete or incomplete. Enjoy the convenience of organizing your tasks efficiently with this intuitive application.
+This application is a user-friendly To-Do List built with React. It allows users to effortlessly manage their tasks by adding, deleting, and updating them. In addition, the note button allows users to add notes as desired. The list also offers the flexibility to mark tasks as complete or incomplete. Enjoy the convenience of organizing your tasks efficiently with this intuitive application.
 
 ## Installation
 
