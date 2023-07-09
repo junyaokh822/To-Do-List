@@ -13,11 +13,14 @@
     },
     {
       "todo": "Get Groceries",
+      "completed": true,
       "notes": [
-        "dasda"
+        "dasda",
+        "dadsadas",
+        "dsd",
+        "dasd"
       ],
-      "id": 6,
-      "completed": true
+      "id": 6
     },
     {
       "todo": "Clean the house",
