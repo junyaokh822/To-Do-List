@@ -1,8 +1,17 @@
+import { useLoaderData } from 'react-router-dom';
 import React, { useState } from 'react';
 import NoteForm from './NoteForm';
 
-function NotePage({ match }) {
-  const { id } = match.params;
+
+export async function loader({params}){
+  const response = await fetch ("http://localhost:3000/todos/" + params.taskId);
+  const todo = await response.json();
+  return todo;
+}
+
+
+function NotePage() {
+  const todo = useLoaderData();
   const [notes, setNotes] = useState([]);
 
   const handleAddNote = (taskId, note) => {
@@ -19,12 +28,12 @@ function NotePage({ match }) {
     setNotes(updatedNotes);
   };
 
-  const taskNotes = notes.filter((note) => note.taskId === id);
+  const taskNotes = notes.filter((note) => note.taskId === todo.id);
 
   return (
     <div>
-      <h2>Task ID: {id}</h2>
-      <NoteForm taskId={id} onSubmit={handleAddNote} />
+      <h2>Task ID: {todo.id}</h2>
+      <NoteForm taskId={todo.id} onSubmit={handleAddNote} />
       <ul>
         {taskNotes.map((note, index) => (
           <li key={index}>
@@ -38,3 +47,9 @@ function NotePage({ match }) {
 }
 
 export default NotePage;
+
+
+
+
+
+
