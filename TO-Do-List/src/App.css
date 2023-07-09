@@ -182,3 +182,58 @@ li {
   width: 100%; 
   padding: 8px; 
 }
+.note-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.note-input {
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.add-note-button {
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.add-note-button:hover {
+  background-color: #0056b3;
+}
+
+.add-note-button:focus,
+.add-note-button:focus-visible {
+  outline: none;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; 
+  padding-top: 20px; 
+}
+
+.center-content h2 {
+  margin-top: 0; 
+}
+
+.center-content ul {
+  margin-top: 0; 
+}
+

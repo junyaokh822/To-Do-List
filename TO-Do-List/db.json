@@ -13,9 +13,11 @@
     },
     {
       "todo": "Get Groceries",
-      "completed": false,
+      "notes": [
+        "dasda"
+      ],
       "id": 6,
-      "note": "welcome"
+      "completed": true
     },
     {
       "todo": "Clean the house",
