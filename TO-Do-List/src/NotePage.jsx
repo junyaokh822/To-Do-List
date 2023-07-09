@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import NoteForm from './NoteForm';
+import './App.css'; 
 
 export async function loader({ params }) {
   const response = await fetch('http://localhost:3000/todos/' + params.taskId);
@@ -64,20 +65,49 @@ function NotePage() {
   };
 
   return (
-    <div>
-      <h2>Task ID: {todo.id}</h2>
+   
+
+
+    <div className="note-page center-content">
+      <h2 className="task-id">Task ID: {todo.id}</h2>
       <NoteForm taskId={todo.id} onSubmit={handleAddNote} />
-      <ul>
+      <ul className="notes-list">
         {notes.map((note, index) => (
-          <li key={index}>
+          <li key={index} className="note-item">
             <p>{note}</p>
             <button onClick={() => handleDeleteNote(todo.id, index)}>Delete Note</button>
           </li>
         ))}
       </ul>
-      <Link to="/">Go back to Home</Link>
+      <Link to="/" className="home-link">Go back to Home</Link>
     </div>
   );
 }
 
 export default NotePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // <div>
+    //   <h2>Task ID: {todo.id}</h2>
+    //   <NoteForm taskId={todo.id} onSubmit={handleAddNote} />
+    //   <ul>
+    //     {notes.map((note, index) => (
+    //       <li key={index}>
+    //         <p>{note}</p>
+    //         <button onClick={() => handleDeleteNote(todo.id, index)}>Delete Note</button>
+    //       </li>
+    //     ))}
+    //   </ul>
+    //   <Link to="/">Go back to Home</Link>
+    // </div>

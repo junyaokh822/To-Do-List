@@ -25,7 +25,20 @@
     {
       "todo": "Clean the house",
       "completed": false,
+      "notes": [
+        "new note\n",
+        "old note"
+      ],
       "id": 7
+    },
+    {
+      "todo": "Ride Bicycles",
+      "completed": false,
+      "notes": [
+        "sss",
+        "ddd"
+      ],
+      "id": 8
     }
   ]
 }

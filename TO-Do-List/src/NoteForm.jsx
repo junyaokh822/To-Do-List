@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css'; 
 
 function NoteForm({ taskId, onSubmit }) {
   const [note, setNote] = useState('');
@@ -14,12 +15,18 @@ function NoteForm({ taskId, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea value={note} onChange={handleInputChange} placeholder="Enter your note..." />
-      <button type="submit">Add Note</button>
+    <form className="note-form" onSubmit={handleSubmit}>
+      <textarea
+        className="note-input"
+        value={note}
+        onChange={handleInputChange}
+        placeholder="Enter your note..."
+      />
+      <button className="add-note-button" type="submit">
+        Add Note
+      </button>
     </form>
   );
 }
 
 export default NoteForm;
-
