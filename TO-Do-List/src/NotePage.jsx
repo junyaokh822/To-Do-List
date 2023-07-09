@@ -98,16 +98,3 @@ export default NotePage;
 
 
 
- // <div>
-    //   <h2>Task ID: {todo.id}</h2>
-    //   <NoteForm taskId={todo.id} onSubmit={handleAddNote} />
-    //   <ul>
-    //     {notes.map((note, index) => (
-    //       <li key={index}>
-    //         <p>{note}</p>
-    //         <button onClick={() => handleDeleteNote(todo.id, index)}>Delete Note</button>
-    //       </li>
-    //     ))}
-    //   </ul>
-    //   <Link to="/">Go back to Home</Link>
-    // </div>
